@@ -1,7 +1,19 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <limits>
 
+std::string getSymbol(int slotValue) {
+    if (slotValue == 0) {
+        return "🍋";
+    }
+    else if (slotValue == 1) {
+        return "💲";
+    }
+    else {
+        return "🎰";
+    }
+}
 
 int main()
 {
@@ -14,16 +26,18 @@ std::cout << "********Welcome bonus 100 credits!********\n";
     std::cout << "Poker (2)  \n";
     std::cout << "Blackjack (3)  \n";
     
+    //variables
     int game;
     int credits = 100;
     std::cout << "Choice: ";
     std::cin >> game;
 
+
     switch(game)
     {
         case 1:
         std::cout << "\n********************Slots great choice!******************** \n";
-        std::cout << "\n0 = lemon  1 = $   2 = 777\n";
+        std::cout << "\n 🍋  💲 🎰 = Jackpot\n";
         std::cout << "+---------------_\n";
         std::cout << "|  MEGA SLOTS (o)\n";
         std::cout << "+===============+\n";
@@ -32,13 +46,27 @@ std::cout << "********Welcome bonus 100 credits!********\n";
         std::cout << "| [ ] [ ] [ ]   |\n";
         std::cout << "+===============+\n";
 
-         while(true){
+        while(true){
 
         std::cout << "\nYou have credits: " << credits << '\n';
         std::cout << "How many credits would you like to bet: ";
 
         int bet;
-        std::cin >> bet;
+        while (true)
+        {
+            std::cin >> bet;
+            if (!std::cin)
+            {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Please enter a valid number: ";
+            }
+            else{
+                break;
+            }
+        }
+        
+        
         credits = credits - bet;
         
         if (credits < 0){
@@ -58,7 +86,7 @@ std::cout << "********Welcome bonus 100 credits!********\n";
         int slot8;
         int slot9;
         slot1 = rand() % 3;
-        slot2 = rand() % 3;
+        slot2 = rand() % 3;         
         slot3 = rand() % 3;
         slot4 = rand() % 3;
         slot5 = rand() % 3;
@@ -70,19 +98,20 @@ std::cout << "********Welcome bonus 100 credits!********\n";
         std::cout << "\n+---------------_\n";
         std::cout << "|  MEGA SLOTS (o)\n";
         std::cout << "+===============+\n";
-        std::cout << "| [" << slot1 << "] [" << slot2 <<"] [" << slot3 << "]   |\n";
-        std::cout << "| [" << slot4 << "] [" << slot5 << "] [" << slot6 << "]   |\n";
-        std::cout << "| [" << slot7 << "] [" << slot8 << "] [" << slot9 << "]   |\n";
+        std::cout << "| [" << getSymbol(slot1) << "] [" << getSymbol(slot2) << "] [" << getSymbol(slot3) << "]   |\n";
+        std::cout << "| [" << getSymbol(slot4) << "] [" << getSymbol(slot5) << "] [" << getSymbol(slot6) << "]   |\n";
+        std::cout << "| [" << getSymbol(slot7) << "] [" << getSymbol(slot8) << "] [" << getSymbol(slot9) << "]   |\n";
         std::cout << "+===============+\n";
         
-        if (slot1 == 2 && slot2 == 2 && slot3 == 2 || slot4 == 2 && slot5 == 2 && slot6 == 2 || slot7 == 2 && slot8 == 2 && slot9 == 2)
+        if (slot1 == 2 && slot2 == 2 && slot3 == 2 || slot4 == 2 && slot5 == 2 && slot6 == 2 || slot7 == 2 && slot8 == 2 && slot9 == 2 || slot3 == 2 && slot6 == 2 && slot9 == 2 || slot2 == 2 && slot5 == 2 && slot8 == 2 || slot1 == 2 && slot4 == 2 && slot7 == 2)
         {
                std::cout << "JACKPOT!!! 10X";
                bet = bet * 10;
                credits = bet + credits;
                bet = 0;
         }
-        else if (slot1 == slot2 && slot2 == slot3 || slot4 == slot5 && slot5 == slot6 || slot7 == slot8 && slot8 == slot9)
+        else if (slot1 == slot2 && slot2 == slot3 || slot4 == slot5 && slot5 == slot6 || slot7 == slot8 && slot8 == slot9 || slot1 == slot4 && slot4 == slot7 || slot2 == slot5 && slot5 == slot8 || slot3 == slot6 && slot6 == slot9)
+        
         {
         std::cout << "\nWINNNERRRR WELL DONE!!!!!!\n";
         bet = bet * 2;
@@ -101,7 +130,6 @@ std::cout << "********Welcome bonus 100 credits!********\n";
         
     }
     }
-
 
     return 0;
 }
