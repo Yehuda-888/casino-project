@@ -1,6 +1,6 @@
 # My C++ Learning Journey 🚀
 
-This repository contains the first projects I've built while learning the fundamentals of C++. The main project is a fully playable console-based casino slot machine game.
+This repository contains the first projects I've built while learning the fundamentals of C++. The main project is a fully playable and robust console-based casino slot machine game.
 
 ---
 
@@ -9,11 +9,13 @@ This repository contains the first projects I've built while learning the fundam
 A command-line slot machine game written in C++.
 
 ### Features:
+-   **Visual Interface:** Displays emoji symbols (🍋, 💲, 🎰) instead of numbers for a true casino feel.
 -   **Endless Gameplay:** A `while` loop allows the player to keep spinning as long as they have credits.
 -   **Betting System:** Players start with 100 credits and can bet on each spin.
--   **Dynamic Payouts:** Features a standard 2x payout for a regular win and a 10x "JACKPOT" payout for getting three 7s.
--   **3x3 Grid:** Displays a full 3x3 grid of symbols for a classic slot machine feel.
--   **Game Over Condition:** The game ends if the player runs out of credits.
+-   **Robust Input Validation:** The game is crash-proof and will not break if the user enters text instead of a number for their bet.
+-   **Multiple Win Conditions:** Detects wins on all three horizontal and all three vertical lines.
+-   **Dynamic Payouts:** Features a standard 2x payout for a regular win and a 10x "JACKPOT" payout.
+-   **Game Over Condition:** The game ends cleanly if the player runs out of credits.
 
 ---
 
@@ -21,20 +23,14 @@ A command-line slot machine game written in C++.
 
 This project helped me practice and understand the following C++ concepts:
 
--   **Variables and Data Types:** Using `int`, `double`, and `bool` to store data like credits, bets, and game state.
--   **Standard I/O:** Using `<iostream>` for printing text to the console (`std::cout`) and getting user input (`std::cin`).
--   **Conditional Logic:**
-    -   Using `if`, `else if`, and `else` statements to create the core game logic for winning, losing, and hitting the jackpot.
-    -   Using `switch` statements to handle menu navigation.
--   **Loops:** Implementing a `while(true)` loop to create a continuous game session that can be exited with a `break` statement.
--   **Operators:**
-    -   **Arithmetic:** `+`, `-`, `*` for managing the player's credits.
-    -   **Relational:** `==`, `<`, `<=` for comparing values in conditions.
-    -   **Logical:** `&&` (AND) and `||` (OR) to build complex win conditions.
--   **Libraries and Random Number Generation:**
-    -   Including libraries like `<iostream>`, `<cstdlib>`, and `<ctime>`.
-    -   Using `srand(time(0))` to seed the random number generator.
-    -   Using `rand() % 3` to generate random slot machine outcomes.
+-   **Functions:** Creating and calling custom functions (`getSymbol`) to organize code, avoid repetition, and make the program easier to read.
+-   **Variables and Data Types:** Using `int`, `double`, `bool`, and `std::string`.
+-   **Standard I/O:** Using `<iostream>` for printing to the console (`std::cout`) and getting user input (`std::cin`).
+-   **Input Stream Management:** Handling `std::cin` error states with `!std::cin`, `std::cin.clear()`, and `std::cin.ignore()` for robust input validation.
+-   **Conditional Logic:** Using `if`, `else if`, and `else` statements to create the core game logic.
+-   **Loops:** Implementing a `while(true)` loop for continuous gameplay and input validation.
+-   **Operators:** Using arithmetic, relational (`==`, `<`), and logical (`&&`, `||`) operators.
+-   **Libraries:** Including and using functionality from `<iostream>`, `<cstdlib>`, `<ctime>`, `<string>`, and `<limits>`.
 
 ---
 
